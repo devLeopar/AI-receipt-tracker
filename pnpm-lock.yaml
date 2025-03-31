@@ -20,6 +20,9 @@ importers:
       '@schematichq/schematic-components':
         specifier: ^0.7.0
         version: 0.7.0(@stripe/react-stripe-js@3.5.1(@stripe/stripe-js@6.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)
+      '@schematichq/schematic-react':
+        specifier: ^1.2.4
+        version: 1.2.4(react@19.1.0)
       '@schematichq/schematic-typescript-node':
         specifier: ^1.1.10
         version: 1.1.10
@@ -568,6 +571,14 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
+  '@schematichq/schematic-js@1.2.2':
+    resolution: {integrity: sha512-8aoFYOQddSgcGM4ahHjenfVkj2F3uoATEgxMo9ljBPeU7xYQ5bUhCvIJDB7yGZfts8UQ3rwtCZQt4PT/1PfGKA==}
+
+  '@schematichq/schematic-react@1.2.4':
+    resolution: {integrity: sha512-luTHq+qFh8HgiUyk/AQTa5vGm1j+OwJneYEuW3p1ns27IOnOYtQ/fKVB/zwxGAdGwjcDCKvTqxMFT2mdjWON/w==}
+    peerDependencies:
+      react: '>=18'
+
   '@schematichq/schematic-typescript-node@1.1.10':
     resolution: {integrity: sha512-nOL1M5XIIK3SmQBX51hhjkaw2BsmbBgk5/VR/fBafH9AVUp9gz/ln8uGgd1hnRZOWdn0msj61veryib5NGf5ZQ==}
 
@@ -1013,6 +1024,9 @@ packages:
   cookie@1.0.2:
     resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
     engines: {node: '>=18'}
+
+  cross-fetch@4.1.0:
+    resolution: {integrity: sha512-uKm5PU+MHTootlWEY+mZ4vvXoCn4fLQxT9dSc1sXVMSFkINTJVN8cAQROpwcKm8bJ/c7rgZVIBWzH5T78sNZZw==}
 
   cross-spawn@6.0.6:
     resolution: {integrity: sha512-VqCUuhcd1iB+dsv8gxPttb5iZh/D0iubSP21g36KXdEuf6I5JiioesUVjpCdHV9MZRUfVFlvwtIUyPfxo5trtw==}
@@ -2738,6 +2752,20 @@ snapshots:
       - react-native
       - typescript
 
+  '@schematichq/schematic-js@1.2.2':
+    dependencies:
+      cross-fetch: 4.1.0
+      uuid: 11.1.0
+    transitivePeerDependencies:
+      - encoding
+
+  '@schematichq/schematic-react@1.2.4(react@19.1.0)':
+    dependencies:
+      '@schematichq/schematic-js': 1.2.2
+      react: 19.1.0
+    transitivePeerDependencies:
+      - encoding
+
   '@schematichq/schematic-typescript-node@1.1.10':
     dependencies:
       form-data: 4.0.2
@@ -3194,6 +3222,12 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   cookie@1.0.2: {}
+
+  cross-fetch@4.1.0:
+    dependencies:
+      node-fetch: 2.7.0
+    transitivePeerDependencies:
+      - encoding
 
   cross-spawn@6.0.6:
     dependencies:
