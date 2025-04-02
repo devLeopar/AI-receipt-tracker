@@ -10,6 +10,7 @@ import { useCallback, useRef, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useSchematicEntitlement } from "@schematichq/schematic-react";
+import { uploadPDF } from "@/actions/uploadPDF";
 function PDFDropzone() {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<string[] | null>(null);
@@ -103,8 +104,8 @@ function PDFDropzone() {
     [user, handleUpload],
   );
 
-  //   const canUpload = isUserSignedIn && isFeatureEnabled;
-  const canUpload = true;
+  const isUserSignedIn = !!user;
+  const canUpload = isUserSignedIn && isFeatureEnabled;
 
   return (
     <DndContext sensors={sensors}>
