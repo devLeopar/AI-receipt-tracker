@@ -5,6 +5,7 @@ import { mutation, query } from "./_generated/server";
 export const generateUploadUrl = mutation({
   args: {},
   handler: async (ctx) => {
+    // Generate a URL that the client can use to upload a file
     return await ctx.storage.generateUploadUrl();
   },
 });
@@ -120,11 +121,11 @@ export const updateReceiptStatus = mutation({
     await ctx.db.patch(args.id, {
       status: args.status,
     });
-
     return true;
   },
 });
 
+// Delete a receipt and its file
 export const deleteReceipt = mutation({
   args: {
     id: v.id("receipts"),
@@ -134,18 +135,6 @@ export const deleteReceipt = mutation({
     if (!receipt) {
       throw new Error("Receipt not found");
     }
-
-    // Verify user has access to this receipt
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
-      throw new Error("Not authenticated");
-    }
-
-    const userId = identity.subject;
-    if (receipt.userId !== userId) {
-      throw new Error("Not authorized to delete this receipt");
-    }
-
     // Delete the file from storage
     await ctx.storage.delete(receipt.fileId);
 
