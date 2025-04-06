@@ -27,7 +27,7 @@ export default function Home() {
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/features">
+              <Link href="#features">
                 <Button variant="outline">Learn More</Button>
               </Link>
             </div>
